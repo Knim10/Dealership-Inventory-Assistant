@@ -20,7 +20,20 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/vehicles">Inventory</a>
             <a class="nav-link disabled" href="#">Sales (Coming Soon)</a>
             <a class="nav-link disabled" href="#">Prospects (Coming Soon)</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
         </div>
+        <c:if test="${not empty sessionScope.user}">
+    <span class="navbar-text text-light ms-3">
+        Logged in as <strong>${sessionScope.user.username}</strong>
+    </span>
+    <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline">
+        <button type="submit" class="btn btn-sm btn-outline-light ms-2">Logout</button>
+    </form>
+</c:if>
+<c:if test="${empty sessionScope.user}">
+    <a class="nav-link text-light" href="${pageContext.request.contextPath}/login">Login</a>
+</c:if>
+
     </div>
 </nav>
 
