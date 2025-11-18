@@ -15,6 +15,7 @@ public class User {
     private String passwordHash; // store BCrypt hash
     private String role;         // 'admin' or 'sales'
     private LocalDateTime createdAt;
+    private Integer salespersonId;
 
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
@@ -28,6 +29,9 @@ public class User {
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
 
+    public Integer getSalespersonId() { return salespersonId; }
+    public void setSalespersonId(Integer salerspersonId) { this.salespersonId = salespersonId; }
+    
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }

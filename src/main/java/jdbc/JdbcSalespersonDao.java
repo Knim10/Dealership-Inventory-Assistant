@@ -29,7 +29,30 @@ public class JdbcSalespersonDao implements SalespersonDao {
         return s;
     }
 
-    @Override public int create(Salesperson s) { /* implement INSERT */ return -1; }
+    @Override
+    public int create(Salesperson s) {
+    String sql = """
+        INSERT INTO Salespersons (first_name, last_name, email, phone, commission_rate)
+        VALUES (?, ?, ?, ?, ?)
+    """;
+    try (Connection c = Db.getConnection();
+         PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+        ps.setString(1, s.getFirstName());
+        ps.setString(2, s.getLastName());
+        ps.setString(3, s.getEmail());
+        ps.setString(4, s.getPhone());
+        ps.setDouble(5, s.getCommissionRate());
+
+        ps.executeUpdate();
+        try (ResultSet keys = ps.getGeneratedKeys()) {
+            return keys.next() ? keys.getInt(1) : -1;
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException("Error creating salesperson", e);
+    }
+    }
+
     @Override public boolean update(Salesperson s) { /* implement UPDATE */ return false; }
     @Override public boolean deleteById(int id) { /* implement DELETE */ return false; }
 

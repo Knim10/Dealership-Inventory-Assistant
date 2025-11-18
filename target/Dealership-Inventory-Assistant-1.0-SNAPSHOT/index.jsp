@@ -11,31 +11,7 @@
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/index.jsp">
-            Dealership Inventory Assistant
-        </a>
-        <div class="navbar-nav">
-            <a class="nav-link" href="${pageContext.request.contextPath}/vehicles">Inventory</a>
-            <a class="nav-link disabled" href="#">Sales (Coming Soon)</a>
-            <a class="nav-link disabled" href="#">Prospects (Coming Soon)</a>
-            <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
-        </div>
-        <c:if test="${not empty sessionScope.user}">
-    <span class="navbar-text text-light ms-3">
-        Logged in as <strong>${sessionScope.user.username}</strong>
-    </span>
-    <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline">
-        <button type="submit" class="btn btn-sm btn-outline-light ms-2">Logout</button>
-    </form>
-</c:if>
-<c:if test="${empty sessionScope.user}">
-    <a class="nav-link text-light" href="${pageContext.request.contextPath}/login">Login</a>
-</c:if>
-
-    </div>
-</nav>
+<%@ include file="/WEB-INF/jspf/header.jsp" %>
 
 <main class="flex-grow-1">
     <div class="container text-center py-5">
@@ -47,9 +23,6 @@
         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
             <a href="${pageContext.request.contextPath}/vehicles" class="btn btn-primary btn-lg px-4">
                 View Vehicle Inventory
-            </a>
-            <a href="#" class="btn btn-outline-secondary btn-lg px-4 disabled">
-                Login (Coming Soon)
             </a>
         </div>
     </div>

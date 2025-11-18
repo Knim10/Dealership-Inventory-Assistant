@@ -6,12 +6,46 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Dealership Inventory</title>
-    <!-- Optional Bootstrap (local or CDN) -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
+
+    <%@ include file="/WEB-INF/jspf/header.jsp" %>
+
 <div class="container py-4">
+
+    <!-- Determine current role once -->
+    <c:set var="currentUser" value="${sessionScope.user}" />
+    <c:set var="role" value="${empty currentUser ? '' : currentUser.role}" />
+
+    <!-- Admin-only: Add Vehicle -->
+    <c:if test="${role == 'admin'}">
+        <div class="mb-3 text-end">
+            <a href="${pageContext.request.contextPath}/vehicles/add"
+               class="btn btn-success">
+                + Add New Vehicle
+            </a>
+        </div>
+    </c:if>
+
+    <!-- Flash messages -->
+    <c:if test="${not empty sessionScope.flashSuccess}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            ${sessionScope.flashSuccess}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <c:remove var="flashSuccess" scope="session"/>
+    </c:if>
+
+    <c:if test="${not empty sessionScope.flashError}">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            ${sessionScope.flashError}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <c:remove var="flashError" scope="session"/>
+    </c:if>
+
     <h1 class="mb-3">Dealership Inventory</h1>
 
     <!-- Search Form -->
@@ -51,6 +85,9 @@
                                 <th class="text-end">Cost</th>
                                 <th class="text-end">Price</th>
                                 <th>Status</th>
+                                <c:if test="${role == 'admin' or role == 'sales'}">
+                                    <th>Actions</th>
+                                </c:if>
                             </tr>
                             </thead>
                             <tbody>
@@ -78,6 +115,38 @@
                                             ${v.status}
                                         </span>
                                     </td>
+
+                                    <c:if test="${role == 'admin' or role == 'sales'}">
+                                        <td>
+                                            <div class="d-flex flex-wrap gap-1">
+
+                                                <!-- Sell button: visible to admin & sales for Available vehicles -->
+                                                <c:if test="${v.status == 'Available'}">
+                                                    <a class="btn btn-sm btn-success"
+                                                       href="${pageContext.request.contextPath}/vehicles/sell?id=${v.vehicleId}">
+                                                        Sell
+                                                    </a>
+                                                </c:if>
+
+                                                <!-- Admin-only Edit/Delete -->
+                                                <c:if test="${role == 'admin'}">
+                                                    <a class="btn btn-sm btn-outline-primary"
+                                                       href="${pageContext.request.contextPath}/vehicles/edit?id=${v.vehicleId}">
+                                                        Edit
+                                                    </a>
+                                                    <form method="post"
+                                                          action="${pageContext.request.contextPath}/vehicles/delete"
+                                                          onsubmit="return confirm('Delete vehicle ID ${v.vehicleId}?');">
+                                                        <input type="hidden" name="id" value="${v.vehicleId}">
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </c:if>
+
+                                            </div>
+                                        </td>
+                                    </c:if>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -86,7 +155,9 @@
                 </c:when>
                 <c:otherwise>
                     <div class="p-4">
-                        <p class="mb-0 text-muted">No vehicles found. Try adjusting your search or seed the database.</p>
+                        <p class="mb-0 text-muted">
+                            No vehicles found. Try adjusting your search or seed the database.
+                        </p>
                     </div>
                 </c:otherwise>
             </c:choose>
@@ -94,8 +165,10 @@
     </div>
 
     <div class="mt-3 text-muted">
-        <small>Total: <strong><c:out value='${fn:length(vehicles)}' /></strong></small>
+        <small>Total: <strong><c:out value="${fn:length(vehicles)}" /></strong></small>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

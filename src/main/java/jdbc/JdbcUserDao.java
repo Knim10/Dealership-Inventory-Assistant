@@ -23,6 +23,8 @@ public class JdbcUserDao implements UserDao {
         u.setUsername(rs.getString("username"));
         u.setPasswordHash(rs.getString("password_hash"));
         u.setRole(rs.getString("role"));
+        int spId = rs.getInt("salesperson_id");
+        u.setSalespersonId(rs.wasNull() ? null : spId);
         Timestamp ts = rs.getTimestamp("created_at");
         u.setCreatedAt(ts != null ? ts.toLocalDateTime() : null);
         return u;

@@ -102,7 +102,7 @@ INSERT INTO Salespersons (first_name, last_name, email, phone, commission_rate) 
 -- Vehicles
 INSERT INTO Vehicles (make, model, year, color, category, cost, price, status) VALUES
 ('Toyota', 'Camry', 2022, 'Silver', 'Car', 21000, 25999, 'Available'),
-('Ford', 'F-150', 2023, 'Blue', 'Truck', 34000, 38999, 'Available'),
+('Ford', 'F-150', 2023, 'Blue', 'Truck', 34000, 38999, 'Reserved'),
 ('Honda', 'Civic', 2021, 'White', 'Car', 18500, 22999, 'Sold');
 
 -- Prospects
