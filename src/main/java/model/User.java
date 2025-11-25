@@ -30,7 +30,7 @@ public class User {
     public void setRole(String role) { this.role = role; }
 
     public Integer getSalespersonId() { return salespersonId; }
-    public void setSalespersonId(Integer salerspersonId) { this.salespersonId = salespersonId; }
+    public void setSalespersonId(Integer salespersonId) { this.salespersonId = salespersonId; }
     
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

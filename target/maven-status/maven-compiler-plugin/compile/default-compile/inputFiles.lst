@@ -3,6 +3,8 @@ E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\model\Salesper
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\model\Vehicle.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\jdbc\JdbcSalespersonDao.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\jdbc\JdbcProspectDao.java
+E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\web\SellVehicleServlet.java
+E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\web\MySalesServlet.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\dao\SaleDao.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\web\SalesReportServlet.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\dao\VehicleDao.java
@@ -22,6 +24,7 @@ E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\dao\UserDao.ja
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\com\mycompany\dealership\inventory\assistant\resources\JakartaEE10Resource.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\web\LoginServlet.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\web\LogoutServlet.java
+E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\web\AddSalespersonServlet.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\util\PasswordHashGenerator.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\util\Db.java
 E:\CIS 175\Workspace\Dealership-Inventory-Assistant\src\main\java\web\AuthFilter.java

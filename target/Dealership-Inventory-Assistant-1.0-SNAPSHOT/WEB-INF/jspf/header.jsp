@@ -22,8 +22,10 @@
                 <c:if test="${not empty sessionScope.user and sessionScope.user.role == 'admin'}">
                     <a class="nav-link" href="${pageContext.request.contextPath}/vehicles/add">Add Vehicle</a>
                     <a class="nav-link" href="${pageContext.request.contextPath}/sales/report">Sales Report</a>
-                    <a class="nav-link" href="${pageContext.request.contextPath}/salespersons/add">Add Salesperson</a>
+                    <!--<a class="nav-link" href="${pageContext.request.contextPath}/salespersons/add">Add Salesperson</a>-->
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/users/add">Add User</a>
                 </c:if>
+
 
                 <!-- Sales-only links -->
                 <c:if test="${not empty sessionScope.user and sessionScope.user.role == 'sales'}">

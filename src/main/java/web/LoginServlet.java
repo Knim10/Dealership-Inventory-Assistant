@@ -42,6 +42,9 @@ public class LoginServlet extends HttpServlet {
 
         Optional<User> user = auth.authenticate(username, password);
         if (user.isPresent()) {
+            HttpSession old = req.getSession(false);
+            if (old != null) old.invalidate(); 
+            
             HttpSession session = req.getSession(true);
             session.setAttribute("user", user.get());
             // Optional: shorter timeout for dev

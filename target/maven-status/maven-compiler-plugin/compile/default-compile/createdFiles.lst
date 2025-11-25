@@ -2,6 +2,7 @@ dao\ProspectDao.class
 dao\SaleDao.class
 security\AuthService.class
 util\PasswordHashGenerator.class
+web\AdminAddUserServlet.class
 dao\UserDao.class
 model\Prospect.class
 web\EditVehicleServlet.class
