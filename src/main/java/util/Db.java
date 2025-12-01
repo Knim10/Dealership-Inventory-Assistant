@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author knim1
  */
 public class Db {
-    // For class demo: hard-coded (move to properties/env for production)
+    
     private static final String URL = "jdbc:mysql://localhost:3306/dealership_inventory?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASS = "password";
