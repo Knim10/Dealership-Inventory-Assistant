@@ -91,8 +91,8 @@ CREATE TABLE Sales (
 
 -- Users
 INSERT INTO Users (username, password_hash, role) VALUES
-('admin', '$2a$10$samplehashedadminpass', 'admin'),
-('jsmith', '$2a$10$samplehashedsalespass', 'sales');
+('admin', '$2a$10$5lbbV9z/nbVFuw8pxBhw0ejq59GZaOZCVB.T6gO4m4lvrbFMvejWa', 'admin'),
+('jsmith', '$2a$10$5lbbV9z/nbVFuw8pxBhw0ejq59GZaOZCVB.T6gO4m4lvrbFMvejWa', 'sales');
 
 -- Salespersons
 INSERT INTO Salespersons (first_name, last_name, email, phone, commission_rate) VALUES
